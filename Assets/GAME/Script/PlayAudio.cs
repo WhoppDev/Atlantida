@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayAudio : MonoBehaviour
 {
     public AudioClip fala;
+    public GameObject sair;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +14,7 @@ public class PlayAudio : MonoBehaviour
         {
             Debug.Log("Tocando som");
             AudioManager.PlaySound(fala);
+            sair.SetActive(true);
         }
     }
 }

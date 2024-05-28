@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class BoteMovimento : MonoBehaviour
 {
-    public float velocidade = 5;
+    public float velocidade = 5f;
     public Transform target;
     public Rigidbody rb;
     public OlhoAberto olhoAberto;
     public GameObject player;
 
-
-    // Movimentar do ponto inicial até o ponto final
     void FixedUpdate()
     {
         MovimentarBarco();
@@ -20,13 +18,11 @@ public class BoteMovimento : MonoBehaviour
         if (olhoAberto.boteMovimento)
         {
             Vector3 direcao = target.position - transform.position;
-            rb.MovePosition(transform.position + direcao.normalized * velocidade * Time.deltaTime);
-
+            rb.MovePosition(transform.position + direcao.normalized * velocidade * Time.fixedDeltaTime);
 
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
             {
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                // Desativar o movimento do barco
                 olhoAberto.boteMovimento = false;
             }
         }
